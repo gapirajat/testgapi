@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,27 +5,41 @@
     <title>Upload Files</title>
     <script>
       function configureDropDownLists(ddl1,ddl2) {
-    var colours = ['Black', 'White', 'Blue'];
-    var shapes = ['Square', 'Circle', 'Triangle'];
-    var names = ['John', 'David', 'Sarah'];
+    var PHY = ['PHYUnit1', 'PHYUnit2', 'PHYUnit3','PHYUnit4','PHYUnit5','PHYUnit6'];
+    var MC = ['MCUnit1', 'MCUnit2', 'MCUnit3','MCUnit4','MCUnit5','MCUnit6'];
+    var EM = ['EMUnit1', 'EMUnit2', 'EMUnit3','EMUnit4'];
+    var CPPS = ['CPPSUnit1', 'CPPSUnit2', 'CPPSUnit3','CPPSUnit4'];
+    var EG = ['EGUnit1', 'EGUnit2', 'EGUnit3','EGUnit4'];
 
     switch (ddl1.value) {
-        case 'Colours':
+        case 'PHY':
             ddl2.options.length = 0;
-            for (i = 0; i < colours.length; i++) {
-                createOption(ddl2, colours[i], colours[i]);
+            for (i = 0; i < PHY.length; i++) {
+                createOption(ddl2, PHY[i], PHY[i]);
             }
             break;
-        case 'Shapes':
+        case 'MC':
             ddl2.options.length = 0; 
-        for (i = 0; i < shapes.length; i++) {
-            createOption(ddl2, shapes[i], shapes[i]);
+        for (i = 0; i < MC.length; i++) {
+            createOption(ddl2, MC[i], MC[i]);
             }
             break;
-        case 'Names':
+        case 'EM':
             ddl2.options.length = 0;
-            for (i = 0; i < names.length; i++) {
-                createOption(ddl2, names[i], names[i]);
+            for (i = 0; i < EM.length; i++) {
+                createOption(ddl2, EM[i], EM[i]);
+            }
+            break;
+        case 'CPPS':
+            ddl2.options.length = 0;
+            for (i = 0; i < CPPS.length; i++) {
+                createOption(ddl2, CPPS[i], CPPS[i]);
+            }
+            break;
+        case 'EG':
+            ddl2.options.length = 0;
+            for (i = 0; i < EG.length; i++) {
+                createOption(ddl2, EG[i], EG[i]);
             }
             break;
             default:
@@ -45,12 +58,13 @@
     </script>
   </head>
   <body>
-    <h1>File Uploader</h1>
+    <h1 id ="demo">File Uploader</h1>
     <select id="ddl" onchange="configureDropDownLists(this,document.getElementById('ddl2'))">
-<option value=""></option>
-<option value="Colours">Colours</option>
-<option value="Shapes">Shapes</option>
-<option value="Names">Names</option>
+<option value="PHY">PHY</option>
+<option value="MC">MC</option>
+<option value="EM">EM</option>
+<option value="EG">EG</option>
+<option value="CPPS">CPPS</option>
 </select>
 
 <select id="ddl2">
@@ -62,18 +76,21 @@
         <input type="button" id="submitBtn" value="Upload Files">
         <label id="resp"></label>
     </form>
-    <script>
+    <script type="text/javascript" src="code.js">
+      //google.script.run.getElementById('submitBtn').relator();
       document.getElementById('submitBtn').addEventListener('click',
-        function(e){
-          google.script.run.withSuccessHandler(onSuccess).uploadFiles(this.parentNode)//this.parentnode points to submit
+        function(e){google.script.run.relator()
+          google.script.run.withSuccessHandler(onSuccess).uploadFiles(this.parentNode)
         })
-        
         function onSuccess(data){
           document.getElementById('resp').innerHTML = "File Uploaded to the path " +data;
-          alert(document.getElementById('ddl2').value);
+          alert("Thank you your file has been uploaded to " + document.getElementById('ddl2').value );
 
         }
        
     </script>
   </body>
 </html>
+           google.script.run.withSuccessHandler(onSuccess).uploadFiles(this.parentNode)function(e){
+  
+        }
