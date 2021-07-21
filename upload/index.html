@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <title>Upload Files</title>
+    <script>
+      function configureDropDownLists(ddl1,ddl2) {
+    var colours = ['Black', 'White', 'Blue'];
+    var shapes = ['Square', 'Circle', 'Triangle'];
+    var names = ['John', 'David', 'Sarah'];
+
+    switch (ddl1.value) {
+        case 'Colours':
+            ddl2.options.length = 0;
+            for (i = 0; i < colours.length; i++) {
+                createOption(ddl2, colours[i], colours[i]);
+            }
+            break;
+        case 'Shapes':
+            ddl2.options.length = 0; 
+        for (i = 0; i < shapes.length; i++) {
+            createOption(ddl2, shapes[i], shapes[i]);
+            }
+            break;
+        case 'Names':
+            ddl2.options.length = 0;
+            for (i = 0; i < names.length; i++) {
+                createOption(ddl2, names[i], names[i]);
+            }
+            break;
+            default:
+                ddl2.options.length = 0;
+            break;
+    }
+
+}
+
+    function createOption(ddl, text, value) {
+        var opt = document.createElement('option');
+        opt.value = value;
+        opt.text = text;
+        ddl.options.add(opt);
+    }
+    </script>
+  </head>
+  <body>
+    <h1>File Uploader</h1>
+    <select id="ddl" onchange="configureDropDownLists(this,document.getElementById('ddl2'))">
+<option value=""></option>
+<option value="Colours">Colours</option>
+<option value="Shapes">Shapes</option>
+<option value="Names">Names</option>
+</select>
+
+<select id="ddl2">
+</select>
+    <form>
+        <input type="file" name="myFile" mulitple>
+        <br>
+        <br>
+        <input type="button" id="submitBtn" value="Upload Files">
+        <label id="resp"></label>
+    </form>
+    <script>
+      document.getElementById('submitBtn').addEventListener('click',
+        function(e){
+          google.script.run.withSuccessHandler(onSuccess).uploadFiles(this.parentNode)//this.parentnode points to submit
+        })
+        
+        function onSuccess(data){
+          document.getElementById('resp').innerHTML = "File Uploaded to the path " +data;
+          alert(document.getElementById('ddl2').value);
+
+        }
+       
+    </script>
+  </body>
+</html>
