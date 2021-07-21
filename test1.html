@@ -75,7 +75,7 @@
       if (data.action == google.picker.Action.PICKED) {
         var fileId = data.docs[0].id;
         //alert('The user selected: ' + fileId);
-  location.replace("https://drive.google.com" + fileId)
+  location.replace("https://drive.google.com/file/d/" + fileId)
       }
     }
     </script>
