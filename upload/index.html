@@ -3,6 +3,7 @@
   <head>
     <base target="_top">
     <title>Upload Files</title>
+    <script type="text/javascript" src="code.js"></script>
     <script>
       function configureDropDownLists(ddl1,ddl2) {
     var PHY = ['PHYUnit1', 'PHYUnit2', 'PHYUnit3','PHYUnit4','PHYUnit5','PHYUnit6'];
@@ -76,7 +77,7 @@
         <input type="button" id="submitBtn" value="Upload Files">
         <label id="resp"></label>
     </form>
-    <script type="text/javascript" src="code.js">
+   <script>
       //google.script.run.getElementById('submitBtn').relator();
       document.getElementById('submitBtn').addEventListener('click',
         function(e){google.script.run.relator()
